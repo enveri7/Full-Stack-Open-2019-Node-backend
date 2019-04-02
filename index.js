@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 
+app.use(express.static('build'))
 app.use(cors())
 
 app.use(bodyParser.json())
@@ -37,17 +38,17 @@ let persons = [
         id: 4
     }
 ]
-app.get('/info', (request, response) => {
+app.get('/api/info', (request, response) => {
     const infoText = `Puhelinluettelossa ${persons.length} henkilön tiedot \n${new Date()}`
     response.set('Content-Type', 'text/plain');
     response.send(infoText)
 })
 
-app.get('/persons', (request, response) => {
+app.get('/api/persons', (request, response) => {
     response.json(persons)
 })
 
-app.get('/persons/:id', (request, response) => {
+app.get('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     const person = persons.find(person => person.id === id)
 
@@ -58,7 +59,7 @@ app.get('/persons/:id', (request, response) => {
     }
 })
 
-app.post('/persons', (request, response) => {
+app.post('/api/persons', (request, response) => {
     const body = request.body
     if (!body.name) {
         return response.status(400).json({
@@ -88,7 +89,7 @@ app.post('/persons', (request, response) => {
     response.json(person)
 })
 
-app.delete('/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     const person = persons.find(person => person.id === id)
 
