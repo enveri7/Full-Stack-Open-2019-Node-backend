@@ -20,6 +20,7 @@
   "homepage": "https://github.com/enveri7/Full-Stack-Open-2019-Node-backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.21",
     "morgan": "^1.9.1"

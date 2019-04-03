@@ -19,7 +19,6 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', personSchema)
 
-
 if (process.argv.length === 3) {
 
     Person.find({}).then(result => {
@@ -38,7 +37,7 @@ if (process.argv.length === 3) {
     })
     
     person.save().then(response => {
-        console.log(`lisätään ${process.argv[3]} numero ${process.argv[4]} luetteloon`);
+        console.log(`lisätään ${response.name} numero ${response.number} luetteloon`);
         mongoose.connection.close();
     })
 
