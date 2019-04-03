@@ -35,7 +35,6 @@ if (process.argv.length === 3) {
         name: process.argv[3],
         number: process.argv[4]
     })
-    
     person.save().then(response => {
         console.log(`lisätään ${response.name} numero ${response.number} luetteloon`);
         mongoose.connection.close();
@@ -43,5 +42,5 @@ if (process.argv.length === 3) {
 
 } else {
     console.log("Väärä määrä komentorivi parametreja")
-    mongoose.connection.close();
+    mongoose.connection.close()
 }
